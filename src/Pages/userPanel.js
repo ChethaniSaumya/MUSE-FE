@@ -23,7 +23,7 @@ const UserPanel = () => {
   const { switchNetwork } = useSwitchNetwork();
   const [_connected, setConnected] = useState(false);
   const { disconnect } = useDisconnect();
-  const API_BASE_URL = 'http://localhost:5000'; //'https://muse-be.onrender.com';
+  const API_BASE_URL = 'https://muse-be.onrender.com'; //'http://localhost:5000';
 
   const { address: walletAddress } = useAccount({
     async onConnect() {
