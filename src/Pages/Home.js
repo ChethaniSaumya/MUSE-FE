@@ -434,7 +434,7 @@ const Home = () => {
 					{_connected && (
 						<Link activeClass="" id="fontSize" onClick={() => window.location.href = 'user-panel'}>
 							<button className="user-panel-btn" >
-								<i className="fas fa-user"></i> User Panel
+								<i className="fas fa-user"></i> User Portal
 							</button></Link>
 					)}
 					{_connected ? (
