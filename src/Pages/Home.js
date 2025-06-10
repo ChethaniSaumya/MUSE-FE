@@ -71,11 +71,19 @@ const Home = () => {
 		functionName: 'additionalPrice',
 	});
 
-	const { data: userMintedCount } = useContractRead({
+	/*const { data: userMintedCount } = useContractRead({
 		...contract,
 		functionName: 'userMinted',
 		args: [walletAddress],
 		enabled: !!walletAddress,
+	});*/
+
+	const { data: userMintedCount, isLoading: isLoadingMintCount } = useContractRead({
+		...contract,
+		functionName: 'userMinted',
+		args: [walletAddress],
+		enabled: !!walletAddress,
+		watch: true, // This will refetch when the value changes
 	});
 
 	// API endpoint - update this to match your backend URL
@@ -106,9 +114,17 @@ const Home = () => {
 
 	// Calculate mint cost based on user's minting history
 	const calculateMintCost = () => {
-		if (!basePrice || !additionalPrice) return '0';
-		console.log("userMinted : " + userMintedCount);
-		return userMintedCount === 0 ? '0' : additionalPrice.toString();
+		if (!basePrice || !additionalPrice || userMintedCount === undefined) {
+			return '0';
+		}
+
+		console.log("userMintedCount:", userMintedCount);
+		console.log("basePrice:", basePrice);
+		console.log("additionalPrice:", additionalPrice);
+
+		// First NFT is free (basePrice = 0), subsequent NFTs cost additionalPrice
+		const mintCount = Number(userMintedCount);
+		return mintCount === 0 ? basePrice.toString() : additionalPrice.toString();
 	};
 
 	const fetchUserDataByWallet = async (walletAddress) => {
@@ -170,7 +186,6 @@ const Home = () => {
 			return;
 		}
 
-		// Use existing email if available, otherwise check for new email input
 		const emailToUse = hasExistingEmail ? existingEmail : email.trim();
 
 		if (!emailToUse) {
@@ -178,7 +193,6 @@ const Home = () => {
 			return;
 		}
 
-		// Email validation (only for new emails)
 		if (!hasExistingEmail) {
 			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (!emailRegex.test(emailToUse)) {
@@ -195,19 +209,21 @@ const Home = () => {
 			setMessage('Initiating mint transaction...');
 
 			const mintCost = calculateMintCost();
-			console.log("currentMintPrice : " + calculateMintCost());
+			console.log("Calculated mint cost:", mintCost);
+			console.log("User minted count:", userMintedCount);
 
-			// Call the mint function with name and email
+			// Ensure we're using the correct cost
+			const costInWei = mintCost;
+
 			const res = await writeAsync({
 				functionName: 'mint',
 				args: [1, name.trim(), emailToUse.toLowerCase()],
-				value: mintCost,
+				value: costInWei, // Use the calculated cost
 				gasLimit: '685000'
 			});
 
 			setMessage('Transaction submitted. Waiting for confirmation...');
 
-			// Wait for transaction confirmation
 			const result = await publicClient.waitForTransactionReceipt(res);
 
 			if (result.status === 'success') {
@@ -216,10 +232,8 @@ const Home = () => {
 				setMessage('NFT minted successfully! Preparing your certificate...');
 				setIsCertificatePreparing(true);
 
-				// After successful mint, save user data to backend
 				await saveUserDataToBackend(res.hash);
 
-				// Clear only the name field, keep email if it was existing
 				setName('');
 				if (!hasExistingEmail) {
 					setEmail('');
@@ -237,105 +251,105 @@ const Home = () => {
 	};
 
 
-const handleMintError = async (error) => {
-	setIsMinting(false);
+	const handleMintError = async (error) => {
+		setIsMinting(false);
 
-	if (error.message.includes("Transaction with hash")) {
-		setMintSuccess(true);
-		setMessage('Transaction successful! Preparing your certificate...');
-		setIsCertificatePreparing(true);
-		// **UPDATED: Make this async and await the result**
-		await saveUserDataToBackend();
-	} else if (error.message.includes("err: insufficient funds for gas")) {
-		setInsufficientFunds(true);
-		setMessage('Insufficient funds for gas fees');
-	} else if (error.message.includes("User rejected the request")) {
-		setMessage('Transaction cancelled by user');
-	} else if (error.message.includes("Max per wallet exceeded")) {
-		setMintError(true);
-		setMessage('Maximum NFTs per wallet exceeded');
-	} else if (error.message.includes("Max supply exceeded")) {
-		setMintError(true);
-		setMessage('Maximum supply reached');
-	} else if (error.message.includes("Public mint not available")) {
-		setMintError(true);
-		setMessage('Public minting is not currently available');
-	} else {
-		setMintError(true);
-		setMessage('Sorry, something went wrong. Please try again.');
-	}
-};
-	// Function to save user data to backend after successful mint
-// Function to save user data to backend after successful mint
-const saveUserDataToBackend = async (txHash = null) => {
-	try {
-		// Use existing email if available, otherwise use the input email
-		const emailToUse = hasExistingEmail ? existingEmail : email.trim();
-
-		// Get the latest token ID for this wallet
-		let tokenId = null;
-		if (walletAddress) {
-			try {
-				// First get the count of tokens for this wallet
-				const tokenCount = await publicClient.readContract({
-					...contract,
-					functionName: 'userMinted',
-					args: [walletAddress]
-				});
-
-				if (tokenCount && Number(tokenCount) > 0) {
-					// Get the last token ID (at index: count - 1)
-					const lastTokenId = await publicClient.readContract({
-						...contract,
-						functionName: 'walletToTokenIds',
-						args: [walletAddress, Number(tokenCount) - 1]
-					});
-					tokenId = lastTokenId ? Number(lastTokenId) : null;
-				}
-			} catch (error) {
-				console.error('Error fetching token ID:', error);
-			}
-		}
-
-		const response = await fetch(`${API_BASE_URL}/api/users`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name: name.trim(),
-				email: emailToUse.toLowerCase(),
-				walletAddress: walletAddress,
-				transactionHash: txHash,
-				tokenId: tokenId,
-				nftMinted: true,
-				mintedAt: new Date().toISOString()
-			})
-		});
-
-		const data = await response.json();
-
-		if (response.ok) {
-			console.log('User data saved successfully to backend');
-
-			// **NEW: Update local state to reflect the saved data**
-			setExistingEmail(emailToUse.toLowerCase());
-			setHasExistingEmail(true);
-			setEmail(emailToUse.toLowerCase());
-
-			// Set download URL from response
-			if (data.certificateIpfsUrl || data.ownershipCardUrl) {
-				setDownloadUrl(data.certificateIpfsUrl || data.ownershipCardUrl);
-				setIsCertificatePreparing(false);
-				setMessage('Certificate ready for download!');
-			}
+		if (error.message.includes("Transaction with hash")) {
+			setMintSuccess(true);
+			setMessage('Transaction successful! Preparing your certificate...');
+			setIsCertificatePreparing(true);
+			// **UPDATED: Make this async and await the result**
+			await saveUserDataToBackend();
+		} else if (error.message.includes("err: insufficient funds for gas")) {
+			setInsufficientFunds(true);
+			setMessage('Insufficient funds for gas fees');
+		} else if (error.message.includes("User rejected the request")) {
+			setMessage('Transaction cancelled by user');
+		} else if (error.message.includes("Max per wallet exceeded")) {
+			setMintError(true);
+			setMessage('Maximum NFTs per wallet exceeded');
+		} else if (error.message.includes("Max supply exceeded")) {
+			setMintError(true);
+			setMessage('Maximum supply reached');
+		} else if (error.message.includes("Public mint not available")) {
+			setMintError(true);
+			setMessage('Public minting is not currently available');
 		} else {
-			console.error('Failed to save user data:', data.error);
+			setMintError(true);
+			setMessage('Sorry, something went wrong. Please try again.');
 		}
-	} catch (error) {
-		console.error('Error saving user data to backend:', error);
-	}
-};
+	};
+	// Function to save user data to backend after successful mint
+	// Function to save user data to backend after successful mint
+	const saveUserDataToBackend = async (txHash = null) => {
+		try {
+			// Use existing email if available, otherwise use the input email
+			const emailToUse = hasExistingEmail ? existingEmail : email.trim();
+
+			// Get the latest token ID for this wallet
+			let tokenId = null;
+			if (walletAddress) {
+				try {
+					// First get the count of tokens for this wallet
+					const tokenCount = await publicClient.readContract({
+						...contract,
+						functionName: 'userMinted',
+						args: [walletAddress]
+					});
+
+					if (tokenCount && Number(tokenCount) > 0) {
+						// Get the last token ID (at index: count - 1)
+						const lastTokenId = await publicClient.readContract({
+							...contract,
+							functionName: 'walletToTokenIds',
+							args: [walletAddress, Number(tokenCount) - 1]
+						});
+						tokenId = lastTokenId ? Number(lastTokenId) : null;
+					}
+				} catch (error) {
+					console.error('Error fetching token ID:', error);
+				}
+			}
+
+			const response = await fetch(`${API_BASE_URL}/api/users`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: name.trim(),
+					email: emailToUse.toLowerCase(),
+					walletAddress: walletAddress,
+					transactionHash: txHash,
+					tokenId: tokenId,
+					nftMinted: true,
+					mintedAt: new Date().toISOString()
+				})
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				console.log('User data saved successfully to backend');
+
+				// **NEW: Update local state to reflect the saved data**
+				setExistingEmail(emailToUse.toLowerCase());
+				setHasExistingEmail(true);
+				setEmail(emailToUse.toLowerCase());
+
+				// Set download URL from response
+				if (data.certificateIpfsUrl || data.ownershipCardUrl) {
+					setDownloadUrl(data.certificateIpfsUrl || data.ownershipCardUrl);
+					setIsCertificatePreparing(false);
+					setMessage('Certificate ready for download!');
+				}
+			} else {
+				console.error('Failed to save user data:', data.error);
+			}
+		} catch (error) {
+			console.error('Error saving user data to backend:', error);
+		}
+	};
 
 	// Function to handle download
 	const handleDownload = async () => {
@@ -470,7 +484,7 @@ const saveUserDataToBackend = async (txHash = null) => {
 				<section className="mint-section">
 					<h2>Mint Your Commemorative NFT</h2>
 					<p className="mint-description">Own a piece of this special tribute collection</p>
-					
+
 					{/* Display message */}
 					{message && (
 						<div className={`message ${mintSuccess || message.includes('successfully') ? 'success' :
@@ -592,11 +606,11 @@ const saveUserDataToBackend = async (txHash = null) => {
 										1st NFT is FREE!
 									</span>
 								</div>
-								
+
 							</div>
 						</div> : null}
 
-						{/*<div className="opensea-link-container">
+					{/*<div className="opensea-link-container">
 						<a
 							href="https://opensea.io/collection/your-collection-name"
 							target="_blank"
