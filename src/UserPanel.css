@@ -1,0 +1,551 @@
+/* User Panel Styles - Consistent with ASHA Coin theme */
+.user-panel-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(var(--dark-bg), var(--darker-bg));
+  color: var(--text-color);
+  font-family: "PT Serif", serif;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.836) 0%, rgba(0, 0, 0, 0.815) 35%, rgba(0, 0, 0, 0.822) 100%), url('./assets/bg2.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.user-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(230, 182, 34, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.user-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.user-panel-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  letter-spacing: 1px;
+}
+
+.user-panel-content {
+  flex: 1;
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.user-dashboard {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+}
+
+.user-sidebar {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(230, 182, 34, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.596);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(230, 182, 34, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 2px solid var(--gold-accent);
+}
+
+.user-avatar i {
+  font-size: 2.5rem;
+  color: var(--gold-accent);
+}
+
+.user-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.user-wallet {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(10, 10, 10, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  word-break: break-all;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.user-stats {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  font-weight: 500;
+  color: var(--gold-accent);
+}
+
+.marketplace-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background: var(--gold-accent);
+  color: var(--dark-bg);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.marketplace-btn:hover {
+  background: var(--gold-dark);
+}
+
+.marketplace-btn i {
+  font-size: 0.9rem;
+}
+
+.user-main {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(230, 182, 34, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.596);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(230, 182, 34, 0.3);
+  color: var(--text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn i {
+  font-size: 0.9rem;
+}
+
+.tab-btn.active {
+  background: rgba(230, 182, 34, 0.1);
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
+}
+
+.tab-btn:hover {
+  background: rgba(230, 182, 34, 0.1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-title i {
+  font-size: 1.2rem;
+}
+
+.certificates-grid, .nfts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.certificate-card, .nft-card {
+  background: rgba(10, 10, 10, 0.651);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 182, 34, 0.1);
+  transition: all 0.3s ease;
+}
+
+.certificate-card:hover, .nft-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(230, 182, 34, 0.3);
+}
+
+.certificate-image, .nft-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(230, 182, 34, 0.1);
+}
+
+.certificate-details, .nft-details {
+  padding: 1.2rem;
+}
+
+.certificate-name, .nft-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--gold-accent);
+}
+
+.certificate-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.nft-stats {
+  margin-bottom: 1rem;
+}
+
+.nft-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.nft-stat .stat-label {
+  color: var(--text-muted);
+}
+
+.nft-stat .stat-value {
+  color: var(--gold-accent);
+  font-weight: 500;
+}
+
+.certificate-actions, .nft-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: none;
+}
+
+.view-btn {
+  background: rgba(230, 182, 34, 0.1);
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-accent);
+}
+
+.view-btn:hover {
+  background: rgba(230, 182, 34, 0.2);
+}
+
+.download-btn2 {
+  background: var(--gold-accent);
+  color: var(--dark-bg);
+  font-weight: 600;
+}
+
+.download-btn2:hover {
+  background: var(--gold-dark);
+}
+
+.buy-btn {
+  background: var(--gold-accent);
+  color: var(--dark-bg);
+  font-weight: 600;
+}
+
+.buy-btn:hover {
+  background: var(--gold-dark);
+}
+
+.sell-btn {
+  background: rgba(230, 182, 34, 0.1);
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-accent);
+}
+
+.sell-btn:hover {
+  background: rgba(230, 182, 34, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: rgba(230, 182, 34, 0.3);
+}
+
+.empty-state p {
+  margin-bottom: 1.5rem;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: 1px solid var(--gold-accent);
+  color: var(--gold-accent);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.refresh-btn:hover {
+  background: rgba(230, 182, 34, 0.1);
+}
+
+.refresh-btn i {
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.connect-wallet-btn {
+  background: var(--gold-accent);
+  color: var(--dark-bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.connect-wallet-btn:hover {
+  background: var(--gold-dark);
+}
+
+.connect-wallet-btn i {
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .user-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .user-sidebar {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-panel-header {
+    padding: 1.2rem;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .user-panel-content {
+    padding: 1.5rem;
+  }
+
+  .certificates-grid, .nfts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabs-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .refresh-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.nft-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.share-percentage {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--gold-accent);
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Royalties Section Styles */
+.royalties-section {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.royalties-title {
+  font-size: 1.5rem;
+  color: var(--gold-accent);
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 10px;
+}
+
+.royalties-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.royalties-row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.royalties-row.header {
+  font-weight: bold;
+  color: var(--gold-accent);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.royalties-cell {
+  flex: 1;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.royalties-cell:first-child {
+  flex: 0.5;
+}
+
+.royalties-cell:last-child {
+  justify-content: flex-end;
+}
+
+.withdraw-btn {
+  background: var(--gold-accent);
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.withdraw-btn:hover {
+  background: #ffd700;
+  transform: translateY(-1px);
+}
+
+.withdraw-btn i {
+  margin-right: 5px;
+}
