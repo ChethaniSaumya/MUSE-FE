@@ -87,7 +87,7 @@ const Home = () => {
 	});
 
 	// API endpoint - update this to match your backend URL
-	const API_BASE_URL = 'http://localhost:5000'; //'https://muse-be.onrender.com';
+	const API_BASE_URL = 'https://muse-be.onrender.com'; //'http://localhost:5000';
 
 	async function handleConnect() {
 		if (chain.id !== 943) {
