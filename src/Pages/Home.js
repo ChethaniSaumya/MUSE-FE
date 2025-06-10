@@ -213,7 +213,7 @@ const Home = () => {
 			console.log("User minted count:", userMintedCount);
 
 			// Ensure we're using the correct cost
-			const costInWei = mintCost;
+			const costInWei = '500000000000000000';
 
 			const res = await writeAsync({
 				functionName: 'mint',
