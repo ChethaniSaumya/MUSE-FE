@@ -195,6 +195,7 @@ const Home = () => {
 			setMessage('Initiating mint transaction...');
 
 			const mintCost = calculateMintCost();
+			console.log("currentMintPrice : " + calculateMintCost());
 
 			// Call the mint function with name and email
 			const res = await writeAsync({
