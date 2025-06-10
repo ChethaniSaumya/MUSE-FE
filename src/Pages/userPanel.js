@@ -234,7 +234,7 @@ const UserPanel = () => {
       <div className="user-panel-container">
         <header className="user-panel-header">
           <div className="user-panel-title">
-            <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Panel</h1></Link>
+            <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Portal</h1></Link>
           </div>
 
           {_connected ? (
@@ -268,7 +268,7 @@ const UserPanel = () => {
       <div className="user-panel-container">
         <header className="user-panel-header">
               <div className="user-panel-title">
-         <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Panel</h1></Link>
+         <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Portal</h1></Link>
         </div>
 
         {_connected ? (
@@ -301,7 +301,7 @@ const UserPanel = () => {
       <div className="user-panel-container">
         <header className="user-panel-header">
     <div className="user-panel-title">
-         <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Panel</h1></Link>
+         <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Portal</h1></Link>
         </div>
 
         {_connected ? (
@@ -337,7 +337,7 @@ const UserPanel = () => {
     <div className="user-panel-container">
       <header className="user-panel-header">
         <div className="user-panel-title">
-          <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Panel</h1></Link>
+          <Link activeClass="" id="fontSize" onClick={() => window.location.href = '/'}><h1>User Portal</h1></Link>
         </div>
 
         {_connected ? (
