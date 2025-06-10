@@ -108,7 +108,7 @@ const Home = () => {
 	const calculateMintCost = () => {
 		if (!basePrice || !additionalPrice) return '0';
 		console.log("userMinted : " + userMintedCount);
-		return userMintedCount === 0 ? basePrice.toString() : additionalPrice.toString();
+		return userMintedCount === 0 ? '0' : additionalPrice.toString();
 	};
 
 	const fetchUserDataByWallet = async (walletAddress) => {
