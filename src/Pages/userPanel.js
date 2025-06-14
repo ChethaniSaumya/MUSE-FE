@@ -87,7 +87,7 @@ const UserPanel = () => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isDownloadingArchive, setIsDownloadingArchive] = useState(false);
 
-  const API_BASE_URL = 'http://localhost:5000'; //'https://muse-be.onrender.com'; //'http://localhost:5000';
+  const API_BASE_URL = 'https://muse-be.onrender.com'; //'https://muse-be.onrender.com'; //'http://localhost:5000';
 
   const { address: walletAddress } = useAccount({
     async onConnect() {
