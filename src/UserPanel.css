@@ -1,0 +1,883 @@
+/* User Panel Styles - Consistent with ASHA Coin theme */
+.user-panel-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #06070F;
+  background: linear-gradient(90deg, rgba(6, 7, 15, 1) 0%, rgba(2, 3, 8, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  color: var(--text-color);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.user-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: rgba(10, 12, 26, 0.95);
+  border-bottom: 1px solid rgba(113, 110, 203, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.user-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.user-panel-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-lighter));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+}
+
+.user-panel-content {
+  flex: 1;
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.user-dashboard {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+}
+
+.user-sidebar {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(45, 57, 143, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(45, 57, 143, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 2px solid var(--primary-accent);
+}
+
+.user-avatar i {
+  font-size: 2.5rem;
+  color: var(--primary-accent);
+}
+
+.user-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.user-wallet {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(10, 10, 10, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  word-break: break-all;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.user-stats {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  font-weight: 500;
+  color: var(--primary-accent);
+}
+
+.marketplace-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.marketplace-btn:hover {
+  background: linear-gradient(135deg, var(--primary-accent-light), var(--primary-accent-lighter));
+}
+
+.marketplace-btn i {
+  font-size: 0.9rem;
+}
+
+.user-main {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(45, 57, 143, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(45, 57, 143, 0.3);
+  color: var(--text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn i {
+  font-size: 0.9rem;
+}
+
+.tab-btn.active {
+  background: rgba(45, 57, 143, 0.1);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+}
+
+.tab-btn:hover {
+  background: rgba(45, 57, 143, 0.1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-title i {
+  font-size: 1.2rem;
+}
+
+.certificates-grid,
+.nfts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.certificate-card,
+.nft-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(45, 57, 143, 0.1);
+  transition: all 0.3s ease;
+}
+
+.certificate-card:hover,
+.nft-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(45, 57, 143, 0.3);
+}
+
+.certificate-image,
+.nft-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(45, 57, 143, 0.1);
+}
+
+.certificate-details,
+.nft-details {
+  padding: 1.2rem;
+}
+
+.certificate-name,
+.nft-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-accent);
+}
+
+.certificate-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.nft-stats {
+  margin-bottom: 1rem;
+}
+
+.nft-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.nft-stat .stat-label {
+  color: var(--text-muted);
+}
+
+.nft-stat .stat-value {
+  color: var(--primary-accent);
+  font-weight: 500;
+}
+
+.certificate-actions,
+.nft-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: none;
+}
+
+.view-btn {
+  background: rgba(45, 57, 143, 0.1);
+  color: var(--primary-accent);
+  border: 1px solid var(--primary-accent);
+}
+
+.view-btn:hover {
+  background: rgba(45, 57, 143, 0.2);
+}
+
+.download-btn2,
+.buy-btn {
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+  color: white;
+  font-weight: 600;
+}
+
+.download-btn2:hover,
+.buy-btn:hover {
+  background: linear-gradient(135deg, var(--primary-accent-light), var(--primary-accent-lighter));
+}
+
+
+.buy-btn {
+  background: #2D398F;
+  background: linear-gradient(90deg, rgba(45, 57, 143, 1) 0%, rgba(97, 101, 181, 1) 50%, rgba(113, 110, 203, 1) 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.buy-btn:hover {
+  background: rgba(113, 110, 203, 0.8);
+}
+
+.sell-btn {
+  background: rgba(45, 57, 143, 0.1);
+  color: var(--primary-accent);
+  border: 1px solid var(--primary-accent);
+}
+
+.sell-btn:hover {
+  background: rgba(45, 57, 143, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: rgba(45, 57, 143, 0.3);
+}
+
+.empty-state p {
+  margin-bottom: 1.5rem;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: 1px solid var(--primary-accent);
+  color: var(--primary-accent);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.refresh-btn:hover {
+  background: rgba(45, 57, 143, 0.1);
+}
+
+.refresh-btn i {
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+.connect-wallet-btn {
+
+  color: white;
+  border: 1px solid rgba(113, 110, 203, 1);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  background: #2D398F;
+  background: linear-gradient(90deg, rgba(45, 57, 143, 1) 0%, rgba(97, 101, 181, 1) 50%, rgba(113, 110, 203, 1) 100%);
+}
+
+.connect-wallet-btn:hover {
+  background: rgba(113, 110, 203, 0.219);
+  transform: translateY(-1px);
+}
+
+.connect-wallet-btn i {
+  font-size: 0.9rem;
+}
+
+/* Royalties Section Styles */
+.royalties-section {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(45, 57, 143, 0.1);
+}
+
+.royalties-title {
+  font-size: 1.5rem;
+  color: var(--primary-accent);
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(45, 57, 143, 0.3);
+  padding-bottom: 10px;
+}
+
+.royalties-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.royalties-row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.royalties-row.header {
+  font-weight: bold;
+  color: var(--primary-accent);
+  border-bottom: 2px solid rgba(45, 57, 143, 0.5);
+}
+
+.royalties-cell {
+  flex: 1;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.royalties-cell:first-child {
+  flex: 0.5;
+}
+
+.royalties-cell:last-child {
+  justify-content: flex-end;
+}
+
+.withdraw-btn {
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.withdraw-btn:hover {
+  background: linear-gradient(135deg, var(--primary-accent-light), var(--primary-accent-lighter));
+}
+
+.withdraw-btn i {
+  margin-right: 5px;
+}
+
+/* Edit Name Modal Styles */
+.edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit-modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  border: 1px solid var(--primary-accent);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.edit-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(45, 57, 143, 0.3);
+}
+
+.edit-modal-header h3 {
+  margin: 0;
+  color: var(--primary-accent);
+  font-size: 1.5rem;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem;
+}
+
+.close-modal-btn:hover {
+  color: var(--primary-accent);
+}
+
+.edit-modal-body {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid rgba(45, 57, 143, 0.3);
+  background: white;
+  color: var(--text-dark);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+}
+
+.edit-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+}
+
+.cancel-btn:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+}
+
+.save-btn {
+  background: #2D398F;
+  background: linear-gradient(90deg, rgba(45, 57, 143, 1) 0%, rgba(97, 101, 181, 1) 50%, rgba(113, 110, 203, 1) 100%);
+  border: 1px solid var(--primary-accent);
+  color: white;
+  font-weight: 600;
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: rgba(113, 110, 203, 0.8);
+}
+
+/* User name with edit button */
+.user-name-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.edit-certificate-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  padding: 0.3rem;
+}
+
+.edit-certificate-btn:hover {
+  color: var(--primary-accent);
+}
+
+.user-name {
+  margin: 0;
+}
+
+.download-archive-btn {
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.download-archive-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-accent-light), var(--primary-accent-lighter));
+}
+
+.download-archive-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.fa-spinner {
+  margin-right: 5px;
+}
+
+.userNameEdit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .user-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .user-sidebar {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-panel-header {
+    padding: 1.2rem;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .user-panel-content {
+    padding: 1.5rem;
+  }
+
+  .certificates-grid,
+  .nfts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabs-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .refresh-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Add the root variables if they're not already defined */
+:root {
+  --primary-accent: #2D398F;
+  --primary-accent-light: #6165B5;
+  --primary-accent-lighter: #716ECB;
+  --secondary-accent: #D4AF37;
+  --dark-bg: #0A0C1A;
+  --darker-bg: #05060E;
+  --card-bg: #FAFAFA;
+  --text-color: #FFFFFF;
+  --text-muted: #A0A3BD;
+  --text-dark: #1A1A1A;
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+}
+
+/* Add this to your existing CSS */
+/* Add this to your existing CSS */
+
+/* Replace the existing mobile royalties section with this improved version */
+
+@media (max-width: 768px) {
+  .royalties-section {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .royalties-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  /* Hide the table structure on mobile and use card layout instead */
+  .royalties-table {
+    display: block;
+  }
+
+  .royalties-row.header {
+    display: none;
+    /* Hide header row on mobile */
+  }
+
+  .royalties-row {
+    display: block;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(45, 57, 143, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .royalties-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+  }
+
+  .royalties-cell:last-child {
+    border-bottom: none;
+    padding-top: 15px;
+  }
+
+  /* Add labels for mobile using pseudo-elements */
+  .royalties-cell:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--primary-accent);
+    min-width: 120px;
+  }
+
+  /* Style the archive and action cells differently */
+  .royalties-cell:nth-child(5),
+  .royalties-cell:nth-child(6) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .royalties-cell:nth-child(5):before,
+  .royalties-cell:nth-child(6):before {
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .download-archive-btn,
+  .withdraw-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+
+  /* Alternative: If you prefer to keep table format with horizontal scroll */
+  .royalties-table-scroll {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .royalties-table-scroll .royalties-row {
+    display: flex;
+    min-width: 700px;
+    white-space: nowrap;
+  }
+
+  .royalties-table-scroll .royalties-cell {
+    flex: none;
+    min-width: 100px;
+    padding: 12px 8px;
+    font-size: 0.85rem;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .royalties-table-scroll .royalties-cell:first-child {
+    min-width: 80px;
+  }
+
+  .royalties-table-scroll .royalties-cell:nth-child(5),
+  .royalties-table-scroll .royalties-cell:nth-child(6) {
+    min-width: 120px;
+  }
+}
+
+.cancel-btn:disabled,
+.close-modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  color: #999;
+}
